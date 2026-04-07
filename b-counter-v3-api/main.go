@@ -31,7 +31,6 @@ func main() {
 	fs := http.FileServer(http.Dir("./static"))
 	mux.Handle("/", fs)
 
-
 	// API Route: Increment count
 	mux.HandleFunc("POST /api/increment", incrementCount)
 

@@ -1,12 +1,12 @@
-import { emitter } from "./modules/event-emitter.js";
-import { DataService } from "./modules/data-service.js";
+import { emitter } from './modules/event-emitter.js';
+import { DataService } from './modules/data-service.js';
 
 const state = {
   count: 0,
 };
 
 function renderList() {
-  const log = document.querySelector(".log-list");
+  const log = document.querySelector('.log-list');
   if (!log) {
     return;
   }
@@ -16,7 +16,7 @@ function renderList() {
 }
 
 function renderProgress() {
-  const progress = document.querySelector(".progress-fill");
+  const progress = document.querySelector('.progress-fill');
   if (!progress) {
     return;
   }
@@ -24,7 +24,7 @@ function renderProgress() {
 }
 
 function renderDisplay() {
-  const badge = document.querySelector(".badge");
+  const badge = document.querySelector('.badge');
   if (!badge) {
     return;
   }
@@ -37,14 +37,14 @@ function render() {
   renderProgress();
 }
 
-emitter.on("count:changed", (count) => {
+emitter.on('count:changed', (count) => {
   state.count = count;
   render();
 });
 
-const button = document.querySelector("#btn-increment");
+const button = document.querySelector('#btn-increment');
 if (button) {
-  button.addEventListener("click", () => {
+  button.addEventListener('click', () => {
     DataService.fetchCount();
   });
 }

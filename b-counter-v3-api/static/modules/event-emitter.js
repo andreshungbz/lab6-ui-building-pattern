@@ -2,21 +2,24 @@ function createEmitter() {
   const listeners = new Map();
 
   function on(event, callback) {
-    if (!listeners.has(event)) listeners.set(event, [])
-    listeners.get(event).push(callback)
+    if (!listeners.has(event)) listeners.set(event, []);
+    listeners.get(event).push(callback);
   }
 
   function emit(event, data) {
-    if (!listeners.has(event)) return
-    listeners.get(event).forEach(cb => cb(data))
+    if (!listeners.has(event)) return;
+    listeners.get(event).forEach((cb) => cb(data));
   }
 
   function off(event, callback) {
-    if (!listeners.has(event)) return
-    listeners.set(event, listeners.get(event).filter(cb => cb !== callback))
+    if (!listeners.has(event)) return;
+    listeners.set(
+      event,
+      listeners.get(event).filter((cb) => cb !== callback),
+    );
   }
 
-  return { on, emit, off }
+  return { on, emit, off };
 }
 
-export const emitter = createEmitter()
+export const emitter = createEmitter();
